@@ -1,0 +1,7 @@
+
+scalar Date
+
+type PongType {
+    dateTime: Date!
+    message: String!
+}

@@ -1,2 +1,19 @@
-# graphql-simple-api
-NodeJS Typescript GraphQL API skeleton
+# GraphQL Simple API
+
+![Coverage:branches](./badges/badge-branches.svg)
+![Coverage:functions](./badges/badge-functions.svg)
+![Coverage:lines](./badges/badge-lines.svg)
+![Coverage:statements](./badges/badge-statements.svg)
+
+To install the NodeJS packages
+
+```bash
+npm i
+```
+
+To compile and start the project
+
+```bash
+npm run compile
+npm run start
+```

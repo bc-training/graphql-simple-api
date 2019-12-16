@@ -1,0 +1,14 @@
+overwrite: true
+schema: './assets/**/*.gql'
+documents: null
+generates:
+  ./src/model/generated/simpleapi.model.ts:
+    config: 
+      defaultMapper: any
+      contextType: ../../core/graphql/graphql-context#GraphQLContext
+    plugins:
+      - typescript
+      - typescript-resolvers
+  ./src/model/generated/simpleapi.schema-ast.graphql:
+    plugins:
+      - schema-ast      

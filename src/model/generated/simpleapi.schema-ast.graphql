@@ -1,0 +1,11 @@
+scalar Date
+
+type PongType {
+  dateTime: Date!
+  message: String!
+}
+
+type Query {
+  """Ping the running µService and get pong data back"""
+  ping: PongType
+}
