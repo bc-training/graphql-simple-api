@@ -148,7 +148,7 @@
     },
     "linterOptions": {
         "exclude": [
-            "src/model/generated/rqm/rqm.model.ts"
+            "src/model/generated/simpleapi.model.ts"
         ]
     }
 }
