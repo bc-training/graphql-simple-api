@@ -21,8 +21,8 @@ export class Server {
         return this._config;
     }
 
-    async startAsync(): Promise<void> {
-        await this.createGraphQLServer(this.createExpressInstance());
+    startAsync(): Promise<void> {
+        return this.createGraphQLServer(this.createExpressInstance());
     }
 
     private createExpressInstance(): express.Express {
@@ -40,7 +40,7 @@ export class Server {
         const graphQLConfig: Config = {
             typeDefs: typeDefs,
             resolvers: resolvers as any,
-            context: <GraphQLContext>{noop: `'test-${new Date().toISOString()}`},
+            context: <GraphQLContext>{ noop: `'test-${new Date().toISOString()}` },
             debug: graphqlConfig.debug,
             tracing: graphqlConfig.tracing,
             introspection: graphqlConfig.introspection,
