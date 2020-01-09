@@ -7,6 +7,7 @@ import { GraphQLRoutes } from './graphql-routes';
 import { Configuration } from '../config/configuration';
 import { resolvers } from '../../resolvers/resolvers';
 import { GraphQLContext } from './graphql-context';
+import { express as voyagerMiddleware } from 'graphql-voyager/middleware';
 
 @Service()
 export class Server {
@@ -31,6 +32,7 @@ export class Server {
             // Configuration value overriding the Express default of 100kb
             limit: this.configuration.express.bodyLimit
         }));
+        app.use(GraphQLRoutes.Voyager, voyagerMiddleware({ endpointUrl: GraphQLRoutes.GraphQL }));
         return app;
     }
 
@@ -48,7 +50,6 @@ export class Server {
         };
         const graphQLServer = new ApolloServer(graphQLConfig);
         graphQLServer.applyMiddleware({ app, path: GraphQLRoutes.GraphQL });
-        graphQLServer.installSubscriptionHandlers(graphQLHttpServer);
 
         return new Promise((resolve, reject) => {
             graphQLHttpServer.listen(

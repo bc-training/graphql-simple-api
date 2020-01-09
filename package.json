@@ -97,6 +97,7 @@
     "dependencies": {
         "apollo-server": "2.9.13",
         "apollo-server-express": "2.9.13",
-        "express": "4.17.1"
+        "express": "4.17.1",
+        "graphql-voyager": "1.0.0-rc.28"
     }
 }
