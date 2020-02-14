@@ -1,4 +1,7 @@
+import { Request } from 'apollo-server-express';
+import { RequestService } from '../../service/request.service';
 
 export interface GraphQLContext {
-    noop?: string;
+    requestService: RequestService;
+    request?: Request;
 }

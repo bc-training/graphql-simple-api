@@ -5,3 +5,58 @@ type PongType {
     dateTime: Date!
     message: String!
 }
+
+input F999_GetRequestInput {
+	serviceData: F999_GetRequestServiceDataInput!
+}
+
+input F999_GetRequestServiceDataInput {
+	requestIdentifier: F99901_RequestIdentifierInput!
+}
+
+input F99901_RequestIdentifierInput {
+	id: String!
+	idScope: String!
+	idContext: String!
+}
+
+type F999_GetRequestOutput {
+	serviceData: F999_GetRequestServiceDataOutput!
+}
+
+type F999_GetRequestServiceDataOutput {
+	request: F999_RequestType!
+}
+
+type F999_RequestType {
+	identifier: F999_RequestIdentifierType!
+	title: String!
+	serviceLevel: String!
+	contactReason: [F999_RequestContactReasonType]
+	numberOfTimesReopened: Int!
+	role: [F999_RequestRoleType]
+	creationDate: Date!
+	status: F999_RequestStatusType
+}
+
+type F999_RequestIdentifierType {
+	id: String!
+	idScope: String!
+	idContext: String!
+}
+
+type F999_RequestContactReasonType {
+	domain: String
+	productType: String
+	contactReasonCode: String
+	identifiedBy: String
+}
+type F999_RequestRoleType {
+	name: String!
+	creationDate: Date!
+	role: [String]
+}
+
+type F999_RequestStatusType {
+	code: String!
+}

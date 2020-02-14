@@ -8,11 +8,21 @@ import { Configuration } from '../config/configuration';
 import { resolvers } from '../../resolvers/resolvers';
 import { GraphQLContext } from './graphql-context';
 import { express as voyagerMiddleware } from 'graphql-voyager/middleware';
+import { ConfigurationService } from '../config/configuration.service';
+import { LoggingService } from '../logging/logging.service';
+import { GraphQLContextService } from './graphql-context.service';
 
 @Service()
 export class Server {
 
     private _config!: Configuration;
+
+    constructor(
+        private configurationService: ConfigurationService,
+        private loggingService: LoggingService,
+        private graphQlContextService: GraphQLContextService) {
+        this.configuration = configurationService.configuration;
+    }
 
     set configuration(value: Configuration) {
         this._config = value;
@@ -42,7 +52,7 @@ export class Server {
         const graphQLConfig: Config = {
             typeDefs: typeDefs,
             resolvers: resolvers as any,
-            context: <GraphQLContext>{ noop: `'test-${new Date().toISOString()}` },
+            context: this.onContext.bind(this),
             debug: graphqlConfig.debug,
             tracing: graphqlConfig.tracing,
             introspection: graphqlConfig.introspection,
@@ -61,5 +71,9 @@ export class Server {
                     resolve();
                 });
         });
+    }
+
+    private onContext(...p: any[]): GraphQLContext {
+        return this.graphQlContextService.buildContextFromRequest(p[0].req);
     }
 }

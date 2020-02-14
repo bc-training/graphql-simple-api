@@ -1,4 +1,5 @@
 type Query {
     # Ping the running µService and get pong data back
     ping: PongType
+	GetRequest(inputData: F999_GetRequestInput!): F999_GetRequestOutput!
 }

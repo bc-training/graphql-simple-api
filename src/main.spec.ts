@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { startMsg } from './main';
 
 describe('Main', () => {

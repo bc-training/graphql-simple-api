@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { GraphQLRoutes } from './graphql-routes';
 
 class GraphQLRoutesEx extends GraphQLRoutes {

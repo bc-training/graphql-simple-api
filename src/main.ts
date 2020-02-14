@@ -13,7 +13,7 @@ export const startMsg = () => console.log('GRAPHQL-SIMPLE-API is started...');
             bodyLimit: '100kb'
         },
         graphql: {
-            port: 4400
+            port: 4800
         }
     };
     server.configuration = config;
